@@ -54,8 +54,36 @@ function postToOneArrow(){
     .catch(error => console.error('Error:', error)) //3
     .then(response => console.log('Success:', response)); //4
 }
+
+/***************************************
+ * 4 POST /one : write data to html
+***************************************/
+function postData() {
+    //1
+    let content = { testdata: { item: 'This was saved!' } };
+
+    //2
+    let testDataAfterFetch = document.getElementById('test-data');
+    let createdAtAfterFetch = document.getElementById('created-at');
+
+    fetch('http://localhost:3000/test/seven', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(content)  //3
+    })
+    .then(response => response.json())
+    .then(function (text) {
+        console.log(text);
+        //4
+        testDataAfterFetch.innerHTML = text.testdata.testdata; 
+        createdAtAfterFetch.innerHTML = text.testdata.createdAt;
+    });
+}
+
 /*************************************
- * 4 GET FROM /ONE - Display Data
+ * 5 GET FROM /ONE - Display Data
 *************************************/
 function fetchFromOneDisplayData(){
     //1
