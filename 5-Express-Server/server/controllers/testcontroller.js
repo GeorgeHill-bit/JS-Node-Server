@@ -3,16 +3,16 @@ var router = express.Router()
 var sequelize = require('../db');
 var TestModel = sequelize.import('../models/test');
 
-/****************************************
- * Controller Method #1: Simple Response
-****************************************/
+// /****************************************
+//  * Controller Method #1: Simple Response
+// ****************************************/
 router.post('/one', function(req, res) {
   res.send("Test 1 went through!") 
 });
 
-/****************************************
- * Controller Method #2: Persisting Data
-****************************************/
+// /****************************************
+//  * Controller Method #2: Persisting Data
+// ****************************************/
 router.post('/two', function (req, res) {
     let testData = "Test data for endpoint two";
   
@@ -23,9 +23,9 @@ router.post('/two', function (req, res) {
     res.send("Test two went through!");
 });
 
-/****************************************
- * Controller Method #3: req.body
-****************************************/
+// /****************************************
+//  * Controller Method #3: req.body
+// ****************************************/
 router.post('/three', function (req, res) {
     var testData = req.body.testdata.item; 
     TestModel
